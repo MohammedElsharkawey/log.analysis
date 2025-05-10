@@ -1,3 +1,12 @@
+LOG_FILE="apache_logs"
+
+if [ ! -f "$LOG_FILE" ]; then
+  echo "Log file not found!"
+  exit 1
+fi
+
+echo "===== LOG FILE ANALYSIS ====="
+
 total_requests=$(wc -l < "$LOG_FILE")
 get_requests=$(grep -c '"GET ' "$LOG_FILE")
 post_requests=$(grep -c '"POST ' "$LOG_FILE")
